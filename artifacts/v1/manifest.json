@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "version": "v1",
+  "download_base_url": "https://ftp.cptec.inpe.br/rainfall/ainpp-pb-latam/checkpoints/unet/v1/",
+  "model": "UNet",
+  "architecture": {
+    "encoder": "unet",
+    "input_steps": 12,
+    "output_steps": 6,
+    "output_activation": "relu_normalized"
+  },
+  "reference_input_product": "gsmap_nrt",
+  "training_latitude_order": null,
+  "training_domain_verified": false,
+  "source_checkpoint": {
+    "name": "best_model.pth",
+    "sha256": "939bcb25c80312a5ac71c7eddefccf1b2cf60528ecb22860d1a056c838e113c9"
+  },
+  "training_args": {
+    "zarr_path": "/prj/ideeps/adriano.almeida/data/ainpp/legacy/gsmap_nrt+mvk_log_zscore_ainpp-latin-america.zarr",
+    "region": "ainpp-latin-america",
+    "patch_size": 320,
+    "patch_stride": 160,
+    "steps_per_epoch": 800,
+    "val_steps": 800,
+    "input_timesteps": 12,
+    "output_timesteps": 6,
+    "train_stride": 18,
+    "val_stride": 18,
+    "hidden_channels": [
+      64,
+      128,
+      256,
+      512,
+      1024
+    ],
+    "kernel_size": 7,
+    "batch_size": 4,
+    "epochs": 1000,
+    "lr": 0.0001,
+    "weight_decay": 1e-05,
+    "patience": 15,
+    "num_workers": 8,
+    "save_dir": "./newcheckpoint",
+    "save_every": 10,
+    "resume": null,
+    "loss_threshold": 0.5,
+    "loss_high_weight": 5.0
+  },
+  "files": {
+    "checkpoint": {
+      "name": "unet.pth",
+      "sha256": "ce89268a85d7584c7e733e42182512f1b23ce8fbcf47e18b45b727fc4c2fa888"
+    },
+    "mean": {
+      "name": "gsmap_nrt+mvk_log_mean_ainpp-latin-america.npy",
+      "sha256": "fc60bf59e715a6ffeb3c92d784395d5a4ab3d0527acb66f0881f2011f5d77697"
+    },
+    "std": {
+      "name": "gsmap_nrt+mvk_log_std_ainpp-latin-america.npy",
+      "sha256": "8e09d7e62fbfaf6bcd6177abe9f1f1dfef455119053fc2e6af43a796d3aa5786"
+    }
+  }
+}

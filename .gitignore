@@ -1,0 +1,40 @@
+# Python environments and caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+*.egg-info/
+.coverage
+.coverage.*
+htmlcov/
+reference/
+
+# Generated packages
+build/
+dist/
+
+# Generated data and forecasts
+data/
+outputs/
+logs/
+runs/
+*.dat.gz
+*.tif
+*.tiff
+*.zarr/
+
+# Large weights; small manifests and statistics remain visible
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+*.onnx
+
+# Secrets and local deployment files
+.env
+.env.*
+deploy/generated/
+*.log

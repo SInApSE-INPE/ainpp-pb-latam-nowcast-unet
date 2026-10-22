@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "unet-nowcast"
+version = "0.1.0"
+description = "GSMaP NOW to GeoTIFF using a direct U-Net forecaster"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = ["numpy>=1.26,<3", "rasterio>=1.4,<2", "torch==2.10.0"]
+
+[project.scripts]
+unet-download-artifacts = "unet_nowcast.download_artifacts:main"
+unet-nowcast = "unet_nowcast.entrypoint:main"
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1"]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/unet_nowcast"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/src", "/tests", "/config", "/tools", "/deploy",
+    "/artifacts/v1/manifest.json",
+    "/artifacts/v1/gsmap_nrt+mvk_log_mean_ainpp-latin-america.npy",
+    "/artifacts/v1/gsmap_nrt+mvk_log_std_ainpp-latin-america.npy",
+    "/Dockerfile", "/compose.yaml", "/.dockerignore",
+    "/README.md", "/VALIDATION.md", "/pyproject.toml", "/uv.lock",
+]
+exclude = ["/deploy/generated"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

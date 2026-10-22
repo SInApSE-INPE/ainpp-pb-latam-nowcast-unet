@@ -1,0 +1,20 @@
+{
+  "artifacts": "../artifacts/v1",
+  "domain": {
+    "west": -120.0,
+    "south": -55.0,
+    "east": -23.0,
+    "north": 33.0
+  },
+  "model_latitude_order": "north_to_south",
+  "product": "gsmap_now",
+  "remote_directory": "/now/latest",
+  "missing_policy": "normalized_zero",
+  "max_missing_fraction": 0.05,
+  "ftp": {
+    "timeout_seconds": 60,
+    "attempts": 3,
+    "retry_delay_seconds": 30,
+    "max_retry_delay_seconds": 120
+  }
+}
