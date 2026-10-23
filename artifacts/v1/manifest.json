@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "version": "v1",
-  "download_base_url": "https://ftp.cptec.inpe.br/rainfall/ainpp-pb-latam/checkpoints/unet/v1/",
+  "download_base_url": "https://ainpp-pb-latam-nowcasting-checkpoints.s3.us-east-2.amazonaws.com/",
   "model": "UNet",
   "architecture": {
     "encoder": "unet",
@@ -17,7 +17,7 @@
     "sha256": "939bcb25c80312a5ac71c7eddefccf1b2cf60528ecb22860d1a056c838e113c9"
   },
   "training_args": {
-    "zarr_path": "/prj/ideeps/adriano.almeida/data/ainpp/legacy/gsmap_nrt+mvk_log_zscore_ainpp-latin-america.zarr",
+    "zarr_path": "",
     "region": "ainpp-latin-america",
     "patch_size": 320,
     "patch_stride": 160,

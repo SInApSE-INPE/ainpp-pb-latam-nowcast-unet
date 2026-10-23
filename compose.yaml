@@ -4,7 +4,7 @@ services:
     image: unet-nowcast:local
     restart: unless-stopped
     stop_grace_period: 20m
-    user: "${UNET_UID:?Set UNET_UID to your host user ID}:${UNET_GID:?Set UNET_GID to your host group ID}"
+    # user: "${UNET_UID:?Set UNET_UID to your host user ID}:${UNET_GID:?Set UNET_GID to your host group ID}"
     env_file: .env
     volumes:
       - ./artifacts/v1:/app/artifacts/v1
